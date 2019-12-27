@@ -16,10 +16,12 @@ spec:
       name: hugepage
     resources:
       requests:
+        cpu: "2"
         memory: "1Gi"
         hugepages-1Gi: "2Gi"
         intel.com/intel_sriov_pf: '1'
       limits:
+        cpu: "2"
         memory: "1Gi"
         hugepages-1Gi: "2Gi"
         intel.com/intel_sriov_pf: '1'
