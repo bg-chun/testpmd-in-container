@@ -4,7 +4,7 @@ USER root
 
 RUN yum -y group install "Development Tools"
 
-RUN yum install -y numactl-devel kernel kernel-devel kernel-headers wget sudo libhugetlbfs-utils
+RUN yum install -y numactl-devel kernel kernel-devel kernel-headers wget sudo libhugetlbfs-utils pciutils vim python3
 
 ENV DPDK_URL http://fast.dpdk.org/rel/dpdk-19.11.tar.xz
 ENV DPDK_TAR dpdk-19.11.tar.xz 

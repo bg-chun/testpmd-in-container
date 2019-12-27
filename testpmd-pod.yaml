@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpmd-filebacking-with-mlock
+spec:
+  containers:
+  - name: testpmd
+    image: bgchun/testpmd
+    command: [ "/bin/bash", "-c", "--" ]
+    args: [ "while true; do sleep 300000; done;" ]
+    securityContext:
+     capabilities:
+       add: ["IPC_LOCK"]
+    volumeMounts:
+    - mountPath: /hugepages
+      name: hugepage
+    resources:
+      requests:
+        memory: "1Gi"
+        hugepages-1Gi: "2Gi"
+        intel.com/intel_sriov_pf: '1'
+      limits:
+        memory: "1Gi"
+        hugepages-1Gi: "2Gi"
+        intel.com/intel_sriov_pf: '1'
+  volumes:
+  - name: hugepage
+    emptyDir:
+      medium: HugePages
